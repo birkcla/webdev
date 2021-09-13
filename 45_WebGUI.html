@@ -24,12 +24,28 @@
 		</div>
 	</div>
 
+	<div class="solvequadratic">
+		<h2>Solve Quadratic equation</h2>
+		<div>
+			<input class="a" placeholder="x**2" type="number">
+			<input class="b" placeholder="x" type="number">
+			<input class="c" placeholder="0" type="number">
+			<button>Calculate X</button>
+			<div class="output">&nbsp;</div>
+		</div>
+
+
+
+	</div>
+
 
 	<script>
 
 		const hypotenuseButton = document.querySelector(".hypotenuse button")
 		const hypotenuseOutput = document.querySelector(".hypotenuse .output")
 
+		console.log(hypotenuseButton)
+		hypotenuseButton.textContent = "Rächne das mau!"
 		hypotenuseButton.addEventListener("click", showHypotenuse)
 
 		function showHypotenuse() {
@@ -40,6 +56,24 @@
 		}
 
 
+
+		const quadraticButton = document.querySelector(".solvequadratic button")
+		const quadraticResult = document.querySelector(".solvequadratic .output")
+
+		quadraticButton.addEventListener("click", solveQuadraticEquation)
+
+		function solveQuadraticEquation() {
+			const a = Number(document.querySelector(".solvequadratic input.a").value)
+			const b = Number(document.querySelector(".solvequadratic input.b").value)
+			const c = Number(document.querySelector(".solvequadratic input.c").value)
+			const solutions = solveQuadratic(a, b, c)
+			quadraticResult.textContent = solutions
+		}
+
+		
+
 	</script>
+
+
 </body>
 </html>

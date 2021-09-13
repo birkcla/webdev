@@ -67,11 +67,21 @@ const b = getAverage([4, 11, 9, 2, 9]) // should return 7
 
 // Solve ax^2 + bx + c = 0
 function solveQuadratic(a, b, c) {
-	//@TODO
-	return 
+	var D = (b*b - 4 * a * c)
+	if (D > 0){
+		return [
+			(-b - D ** 0.5) / (2 * a),
+			(-b + D ** 0.5) / (2 * a)
+		]
+	} else if (D == 0) {
+		return [-b / (2 * a)];
+	} else {
+		return [];
+	}
+	
 }
-const solutions = solveQuadratic(1, 0, -16) // should return [-4, 4]
-const solution = solveQuadratic(1, -2, 1) // should return [1]
-const empty = solveQuadratic(1, 0, 16) // should return []
+//const solutions = solveQuadratic(1, 0, -16) // should return [-4, 4]
+//const solution = solveQuadratic(1, -2, 1) // should return [1]
+//const empty = solveQuadratic(1, 0, 16) // should return []
 
 
