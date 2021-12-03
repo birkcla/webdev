@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Web-Project GUI</title>
+
+    <style>
+        .main {
+            background-color:rgb(24, 24, 24)
+        }
+
+        .title {
+            padding-top: 50px;
+            text-align:center;
+            color: ghostwhite;
+            font-size: 100px;
+            font-weight: bold;
+            padding-bottom: 50px;
+        }
+
+        .input {
+            text-align:center;
+        }
+
+
+
+    </style>
+
+
+
+
+
+
+
+</head>
+
+<body class="main">
+
+    <div class="title">Web-Project GUI</div>
+
+    
+
+    <div class="input">
+        <button class="increase">Increase</button>
+        <button class="decrease">Decrease</button>
+        <div class="current_number">9</div>
+    </div>       
+    
+    <div class="wrap"><svg class="drawing" width=800 height=300></svg></div>
+    <script>
+        const drawArea = document.querySelector(".drawing")
+        drawArea.addEventListener("pointermove", collectPoints)
+        drawArea.addEventListener("pointerdown", startDrawing)
+        drawArea.addEventListener("pointerup", stopDrawing)
+        drawArea.addEventListener("pointerleave", stopDrawing)
+    
+        let isDrawing = false
+        let points = []
+    
+        function startDrawing() {
+            isDrawing = true
+        }
+    
+        function stopDrawing() {
+            isDrawing = false
+            points = []
+        }
+    
+        function collectPoints(event) {
+            if(isDrawing) {
+                var rect = drawArea.getBoundingClientRect();
+                points.push({
+                    x: event.clientX - rect.left,
+                    y: event.clientY - rect.top
+                })
+                console.log(points);
+            }
+        }
+        
+        </script>
+
+
+
+
+</body>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SVG Drawer</title>
+	<link rel="stylesheet" href="https://gymburgdorf-ef23.github.io/helpers/basicstyle.css"></link>
+	<style>
+		.wrap {background-color: rgb(50, 70, 100);}
+	</style>
+</head>
+<body>
+	<h1>SVG Drawer</h1>
+	<div class="wrap"><svg class="drawing" width=800 height=300></svg></div>
+	<script>
+	const drawArea = document.querySelector(".drawing")
+	drawArea.addEventListener("pointermove", collectPoints)
+	drawArea.addEventListener("pointerdown", startDrawing)
+	drawArea.addEventListener("pointerup", stopDrawing)
+	drawArea.addEventListener("pointerleave", stopDrawing)
+
+	let isDrawing = false
+	let points = []
+
+	function startDrawing() {
+		isDrawing = true
+	}
+
+	function stopDrawing() {
+		isDrawing = false
+		points = []
+	}
+
+	function collectPoints(event) {
+		if(isDrawing) {
+			var rect = drawArea.getBoundingClientRect();
+			points.push({
+				x: event.clientX - rect.left,
+				y: event.clientY - rect.top
+			})
+			console.log(points);
+		}
+	}
+	
+	</script>
+</body>
+</html>
